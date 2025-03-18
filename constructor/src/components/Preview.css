@@ -1,0 +1,249 @@
+/* NEW STYLES ADDED MARCH 16, 2025 */
+
+.preview-image {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.preview-image-container {
+    position: relative;
+    width: 100%;
+    max-width: 300px; /* Ограничьте ширину превью, если нужно */
+    margin: 0 auto;
+    height: 100%; /* Убедимся, что контейнер занимает всю высоту изображения */
+    min-height: 400px; /* Минимальная высота для корректного отображения */
+}
+
+.preview-image-container.with-hood {
+    margin-top: 50px; /* Отступ сверху для халата с капюшона */
+}
+
+.preview-content {
+    position: relative;
+    width: 100%;
+}
+
+.decoration-and-text-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50%; /* Устанавливаем ширину 50% */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Распределяем элементы с промежутками */
+    align-items: center;
+    height: 70%; /* Увеличиваем высоту контейнера */
+    z-index: 10; /* Устанавливаем z-index для корректного наложения */
+}
+
+.decoration-and-text-container:not(.with-hood) {
+    top: 0; /* Для халата без капюшона */
+}
+
+.decoration-and-text-container.with-hood {
+    top: 15%; /* Для халата с капюшоном */
+}
+
+.above-decoration-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Верхняя декорация выровнена по верхнему краю */
+    width: 100%;
+}
+
+.text-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Текст выровнен по центру */
+    width: 100%;
+    flex: 2; /* Увеличиваем пространство для текста */
+}
+
+.below-decoration-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Нижняя декорация выровнена по нижнему краю */
+    width: 100%;
+    margin-bottom: 20px; /* Отступ снизу для точного позиционирования */
+}
+
+.decoration-image.above {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%; /* Устанавливаем ширину верхнего декоратора 60% */
+    min-height: 80px; /* Устанавливаем минимальную высоту */
+    height: auto;
+    align-self: center; /* Центрируем по горизонтали */
+    object-fit: contain; /* Добавляем, чтобы изображение не искажалось */
+    z-index: 11; /* Устанавливаем z-index выше текста */
+    transition: transform 0.3s ease;
+}
+
+.decoration-image.above:hover {
+    /* Эффект увеличения уже убран */
+}
+
+.text-container {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%; /* Убираем ограничение max-width */
+    font-family: inherit;
+    font-size: inherit;
+    color: inherit;
+    padding: 0; /* Убираем вертикальные отступы */
+    line-height: 1.0; /* Минимальный межстрочный интервал */
+    z-index: 10; /* Устанавливаем z-index ниже декораций */
+    transition: transform 0.3s ease;
+}
+
+.text-container:hover {
+    /* Эффект увеличения уже убран */
+}
+
+.decoration-image.below {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%; /* Ширина нижнего декоратора 80% */
+    min-height: 80px; /* Устанавливаем минимальную высоту */
+    height: auto;
+    align-self: center; /* Центрируем по горизонтали */
+    object-fit: contain; /* Добавляем, чтобы изображение не искажалось */
+    z-index: 11; /* Устанавливаем z-index выше текста */
+    transition: transform 0.3s ease;
+    margin-top: 40px; /* Отступ сверху для нижнего декоратора */
+}
+
+.decoration-image.below:hover {
+    /* Эффект увеличения уже убран */
+}
+
+/* Позиции для халата без капюшона и полотенца */
+.decoration-image.above:not(.with-hood),
+.text-container:not(.with-hood),
+.decoration-image.below:not(.with-hood) {
+    top: 15%;
+}
+
+.text-container:not(.with-hood) {
+    top: 45%;
+}
+
+.decoration-image.below:not(.with-hood) {
+    bottom: 0;
+}
+
+/* Позиции для халата с капюшоном */
+.decoration-image.above.with-hood,
+.text-container.with-hood,
+.decoration-image.below.with-hood {
+    top: 35%;
+}
+
+.text-container.with-hood {
+    top: 60%;
+}
+
+.decoration-image.below.with-hood {
+    top: 75%;
+    bottom: auto;
+}
+
+/* Стили для окна выбора декораций */
+.decoration-selection {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%; /* Увеличим ширину до 90% */
+    max-width: 800px; /* Увеличим максимальную ширину до 800px */
+    height: auto;
+    max-height: 80vh;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+    z-index: 1000;
+    padding: 20px;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+.decoration-selection.active {
+    display: flex;
+}
+
+/* Стили для контейнера картинок */
+.decoration-options-container {
+    display: grid; /* Используем grid для более гибкого размещения */
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* Увеличим размер ячеек */
+    gap: 20px; /* Увеличим пространство между блоками до 20px */
+    padding: 10px 0;
+    justify-content: center;
+}
+
+.decoration-option {
+    width: 90px; /* Увеличим размер блока */
+    height: 90px; /* Увеличим размер блока */
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: border-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f9f9f9;
+}
+
+.decoration-option:hover {
+    border-color: #007bff;
+}
+
+.decoration-option img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Стили для кнопок */
+.decoration-selection-buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 20px;
+    gap: 10px; /* Добавим пространство между кнопками */
+}
+
+.decoration-selection-button {
+    padding: 12px 20px; /* Увеличим отступы для кнопок */
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    min-width: 120px; /* Установим минимальную ширину для консистентности */
+}
+
+.decoration-selection-button.clear {
+    background-color: #dc3545; /* Красный цвет для "Очистить" */
+    color: #fff;
+}
+
+.decoration-selection-button.clear:hover {
+    background-color: #c82333; /* Темнее при наведении */
+}
+
+.decoration-selection-button {
+    background-color: #007bff; /* Синий цвет для "Закрыть" */
+    color: #fff;
+}
+
+.decoration-selection-button:hover {
+    background-color: #0056b3; /* Темнее при наведении */
+}
