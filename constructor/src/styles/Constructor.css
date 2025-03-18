@@ -367,6 +367,7 @@ body {
     max-width: 800px; /* Увеличим до 800px, чтобы соответствовать .decoration-selection */
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
+    position: relative;
 }
 
 .modal-content:hover {
@@ -411,6 +412,13 @@ body {
     height: auto;
 }
 
+.modal-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
+}
+
 .modal-clear, .modal-close {
     padding: 8px 12px;
     font-size: 0.75rem;
@@ -419,7 +427,7 @@ body {
     background-color: #6c757d;
     color: #fff;
     cursor: pointer;
-    margin-top: 8px;
+    margin-top: 0; /* Убираем верхний отступ, так как теперь в контейнере */
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
@@ -435,4 +443,186 @@ body {
     width: 100%;
     height: 100%;
     text-align: center;
+}
+
+/* Медиа-запросы для планшетов (до 768px) */
+@media (max-width: 768px) {
+    .constructor-page {
+        width: 100%;
+        padding: 5px;
+        height: auto;
+    }
+
+    .constructor-container {
+        gap: 5px;
+    }
+
+    .content-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .preview-section, .main-controls {
+        max-width: 100%;
+    }
+
+    .preview-section {
+        max-height: 250px;
+    }
+
+    .main-controls {
+        padding: 5px;
+    }
+
+    .embroidery-section {
+        padding: 5px;
+    }
+
+    .embroidery-row {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .embroidery-part {
+        padding: 5px;
+    }
+
+    .font-select, .text-input {
+        padding: 6px;
+        font-size: 0.75rem;
+    }
+
+    .control-title {
+        font-size: 0.7rem;
+    }
+
+    .control-button, .decoration-button, .toggle-text {
+        padding: 6px 10px;
+        font-size: 0.7rem;
+        min-width: 50px;
+        min-height: 30px;
+    }
+
+    .color-button {
+        width: 20px;
+        height: 20px;
+    }
+
+    .range-slider {
+        height: 4px;
+    }
+
+    .range-slider::-webkit-slider-thumb {
+        width: 10px;
+        height: 10px;
+    }
+
+    .range-value {
+        font-size: 0.7rem;
+    }
+
+    .modal-content {
+        padding: 10px;
+        max-width: 600px;
+    }
+
+    .decoration-options {
+        gap: 6px;
+    }
+
+    .modal-buttons {
+        margin-top: 8px;
+    }
+
+    .modal-clear, .modal-close {
+        padding: 6px 10px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Медиа-запросы для смартфонов (до 480px) */
+@media (max-width: 480px) {
+    .constructor-page {
+        padding: 3px;
+    }
+
+    .constructor-container {
+        gap: 3px;
+    }
+
+    .content-row {
+        gap: 3px;
+    }
+
+    .preview-section {
+        max-height: 200px;
+    }
+
+    .main-controls {
+        padding: 3px;
+    }
+
+    .embroidery-section {
+        padding: 3px;
+    }
+
+    .embroidery-row {
+        gap: 3px;
+    }
+
+    .embroidery-part {
+        padding: 3px;
+    }
+
+    .font-select, .text-input {
+        padding: 4px;
+        font-size: 0.625rem;
+    }
+
+    .control-title {
+        font-size: 0.6rem;
+    }
+
+    .control-button, .decoration-button, .toggle-text {
+        padding: 4px 8px;
+        font-size: 0.6rem;
+        min-width: 40px;
+        min-height: 24px;
+    }
+
+    .color-button {
+        width: 16px;
+        height: 16px;
+    }
+
+    .range-slider {
+        height: 3px;
+    }
+
+    .range-slider::-webkit-slider-thumb {
+        width: 8px;
+        height: 8px;
+    }
+
+    .range-value {
+        font-size: 0.6rem;
+    }
+
+    .modal-content {
+        padding: 5px;
+        max-width: 400px;
+    }
+
+    .decoration-options {
+        gap: 4px;
+    }
+
+    .modal-buttons {
+        margin-top: 5px;
+    }
+
+    .modal-clear, .modal-close {
+        padding: 4px 8px;
+        font-size: 0.6rem;
+    }
 }

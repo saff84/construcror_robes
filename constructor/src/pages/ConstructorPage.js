@@ -239,19 +239,21 @@ const ConstructorPage = () => {
                                                         />
                                                     </button>
                                                 ))}
+                                            </div>
+                                            <div className="modal-buttons">
                                                 <button
                                                     className="modal-clear"
                                                     onClick={() => handleClearDecoration('above')}
                                                 >
                                                     Очистить
                                                 </button>
+                                                <button
+                                                    className="modal-close"
+                                                    onClick={() => toggleModal('above')}
+                                                >
+                                                    Закрыть
+                                                </button>
                                             </div>
-                                            <button
-                                                className="modal-close"
-                                                onClick={() => toggleModal('above')}
-                                            >
-                                                Закрыть
-                                            </button>
                                         </div>
                                     </div>
                                 )}
@@ -273,19 +275,21 @@ const ConstructorPage = () => {
                                                         />
                                                     </button>
                                                 ))}
+                                            </div>
+                                            <div className="modal-buttons">
                                                 <button
                                                     className="modal-clear"
                                                     onClick={() => handleClearDecoration('below')}
                                                 >
                                                     Очистить
                                                 </button>
+                                                <button
+                                                    className="modal-close"
+                                                    onClick={() => toggleModal('below')}
+                                                >
+                                                    Закрыть
+                                                </button>
                                             </div>
-                                            <button
-                                                className="modal-close"
-                                                onClick={() => toggleModal('below')}
-                                            >
-                                                Закрыть
-                                            </button>
                                         </div>
                                     </div>
                                 )}

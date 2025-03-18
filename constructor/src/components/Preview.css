@@ -247,3 +247,114 @@
 .decoration-selection-button:hover {
     background-color: #0056b3; /* Темнее при наведении */
 }
+
+/* Медиа-запросы для планшетов (до 768px) */
+@media (max-width: 768px) {
+    .preview-image-container {
+        max-width: 250px;
+        min-height: 300px;
+    }
+
+    .preview-image-container.with-hood {
+        margin-top: 40px;
+    }
+
+    .decoration-and-text-container {
+        width: 60%;
+        height: 65%;
+    }
+
+    .decoration-image.above {
+        width: 50%;
+        min-height: 60px;
+    }
+
+    .decoration-image.below {
+        width: 70%;
+        min-height: 60px;
+        margin-top: 30px;
+    }
+
+    .decoration-selection {
+        padding: 15px;
+        max-width: 600px;
+    }
+
+    .decoration-options-container {
+        gap: 15px;
+        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    }
+
+    .decoration-option {
+        width: 70px;
+        height: 70px;
+    }
+
+    .decoration-selection-buttons {
+        gap: 8px;
+    }
+
+    .decoration-selection-button {
+        padding: 10px 16px;
+        font-size: 12px;
+        min-width: 100px;
+    }
+}
+
+/* Медиа-запросы для смартфонов (до 480px) */
+@media (max-width: 480px) {
+    .preview-image-container {
+        max-width: 200px;
+        min-height: 250px;
+    }
+
+    .preview-image-container.with-hood {
+        margin-top: 30px;
+    }
+
+    .decoration-and-text-container {
+        width: 70%;
+        height: 60%;
+    }
+
+    .decoration-image.above {
+        width: 40%;
+        min-height: 50px;
+    }
+
+    .decoration-image.below {
+        width: 60%;
+        min-height: 50px;
+        margin-top: 20px;
+    }
+
+    .text-container {
+        font-size: 12px !important; /* Переопределяем размер текста */
+    }
+
+    .decoration-selection {
+        padding: 10px;
+        max-width: 350px;
+    }
+
+    .decoration-options-container {
+        gap: 10px;
+        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    }
+
+    .decoration-option {
+        width: 50px;
+        height: 50px;
+    }
+
+    .decoration-selection-buttons {
+        flex-direction: column;
+        gap: 5px;
+    }
+
+    .decoration-selection-button {
+        padding: 8px 12px;
+        font-size: 10px;
+        min-width: 80px;
+    }
+}
