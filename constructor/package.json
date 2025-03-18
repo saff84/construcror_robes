@@ -1,4 +1,6 @@
 {
+  "homepage": "https://saff84.github.io/construcror_robes",
+
   "name": "react-constructor",
   "version": "1.0.0",
   "private": true,
@@ -8,7 +10,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "dependencies": {
     "react": "^18.2.0",
@@ -20,6 +24,7 @@
   "devDependencies": {
     "eslint": "^8.56.0",
     "eslint-config-react-app": "^7.0.1",
+    "gh-pages": "^6.3.0",
     "react-scripts": "^5.0.1"
   },
   "eslintConfig": {
