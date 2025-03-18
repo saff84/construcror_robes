@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/construcror_robes/static/css/main.91218b1f.css",
+    "main.js": "/construcror_robes/static/js/main.92225640.js",
+    "static/media/below2.png": "/construcror_robes/static/media/below2.93b08186ecf9909ba7f9.png",
+    "static/media/robe-terry-with-hood.png": "/construcror_robes/static/media/robe-terry-with-hood.1c92ea2a7188a83362e1.png",
+    "static/media/robe-waffle-with-hood.png": "/construcror_robes/static/media/robe-waffle-with-hood.1c92ea2a7188a83362e1.png",
+    "static/media/robe-terry-no-hood.png": "/construcror_robes/static/media/robe-terry-no-hood.a8da7ac8630aaafa02eb.png",
+    "static/media/robe-waffle-no-hood.png": "/construcror_robes/static/media/robe-waffle-no-hood.a8da7ac8630aaafa02eb.png",
+    "static/media/above1.png": "/construcror_robes/static/media/above1.580e1bfa5806dc4ebe0e.png",
+    "static/media/below1.png": "/construcror_robes/static/media/below1.aabbd9d999661f071ced.png",
+    "static/media/black-towel.jpg": "/construcror_robes/static/media/black-towel.4c69ee526d4d557addfa.jpg",
+    "static/media/blue-towel.jpg": "/construcror_robes/static/media/blue-towel.4c69ee526d4d557addfa.jpg",
+    "static/media/red-towel.jpg": "/construcror_robes/static/media/red-towel.4c69ee526d4d557addfa.jpg",
+    "static/media/white-towel.jpg": "/construcror_robes/static/media/white-towel.4c69ee526d4d557addfa.jpg",
+    "index.html": "/construcror_robes/index.html",
+    "main.91218b1f.css.map": "/construcror_robes/static/css/main.91218b1f.css.map",
+    "main.92225640.js.map": "/construcror_robes/static/js/main.92225640.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.91218b1f.css",
+    "static/js/main.92225640.js"
+  ]
+}
