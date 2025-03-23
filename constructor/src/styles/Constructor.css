@@ -17,8 +17,7 @@ body {
     background-color: #fff;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     border-radius: 8px;
-    overflow: hidden;
-    height: calc(100vh - 20px);
+    min-height: calc(100vh - 20px); /* Меняем height на min-height */
 }
 
 .constructor-container {
@@ -26,8 +25,7 @@ body {
     flex-direction: column;
     gap: 10px;
     width: 100%;
-    height: 100%;
-    overflow: hidden;
+    min-height: 100%; /* Меняем height на min-height */
 }
 
 .content-row {
@@ -52,7 +50,7 @@ body {
     align-items: center;
     background-color: #f8f9fa;
     border-radius: 8px;
-    overflow: hidden;
+    overflow: hidden; /* Обрезаем содержимое, если выходит за границы */
     transition: transform 0.3s ease;
 }
 
@@ -66,7 +64,6 @@ body {
     background-color: #fff;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
     transition: opacity 0.3s ease;
 }
 
@@ -79,7 +76,6 @@ body {
     background-color: #e9f0f7;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
     max-width: 700px;
     margin: 0 auto;
     transition: transform 0.3s ease;
@@ -363,11 +359,12 @@ body {
     background-color: #fff;
     padding: 15px;
     border-radius: 8px;
-    width: 90%; /* Сделаем адаптивным */
-    max-width: 800px; /* Увеличим до 800px, чтобы соответствовать .decoration-selection */
+    width: 90%;
+    max-width: 800px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease;
     position: relative;
+    overflow: visible; /* Убираем прокрутку внутри модального окна */
 }
 
 .modal-content:hover {
@@ -427,7 +424,7 @@ body {
     background-color: #6c757d;
     color: #fff;
     cursor: pointer;
-    margin-top: 0; /* Убираем верхний отступ, так как теперь в контейнере */
+    margin-top: 0;
     transition: background-color 0.3s ease, transform 0.3s ease;
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
@@ -450,11 +447,14 @@ body {
     .constructor-page {
         width: 100%;
         padding: 5px;
-        height: auto;
+        min-height: auto; /* Убираем ограничение по высоте */
+        height: auto; /* Позволяем растягиваться */
     }
 
     .constructor-container {
         gap: 5px;
+        height: auto; /* Убираем фиксированную высоту */
+        overflow: visible; /* Убираем ограничение прокрутки */
     }
 
     .content-row {
@@ -467,24 +467,40 @@ body {
     }
 
     .preview-section {
-        max-height: 250px;
+        max-width: 100%;
+        max-height: 300px; /* Синхронизируем с Preview.css */
     }
 
     .main-controls {
         padding: 5px;
+        overflow: visible; /* Убираем прокрутку */
     }
 
     .embroidery-section {
         padding: 5px;
+        overflow: visible; /* Убираем прокрутку */
     }
 
     .embroidery-row {
-        flex-direction: column;
+        display: grid; /* Используем grid для компактности */
+        grid-template-columns: repeat(2, 1fr); /* Два столбца */
         gap: 5px;
     }
 
     .embroidery-part {
         padding: 5px;
+    }
+
+    .color-part {
+        grid-column: 1 / 2; /* Цвет текста в первом столбце */
+    }
+
+    .text-part {
+        grid-column: 1 / 2; /* Текст вышивки в первом столбце */
+    }
+
+    .settings-part {
+        grid-column: 2 / 3; /* Настройки во втором столбце */
     }
 
     .font-select, .text-input {
@@ -523,20 +539,30 @@ body {
 
     .modal-content {
         padding: 10px;
-        max-width: 600px;
+        max-width: 90%;
+        max-height: none; /* Убираем ограничение по высоте */
+        overflow: visible; /* Убираем прокрутку */
     }
 
     .decoration-options {
+        grid-template-columns: repeat(auto-fit, minmax(35px, 1fr));
         gap: 6px;
+        margin: 6px 0;
+    }
+
+    .decoration-button {
+        padding: 6px;
     }
 
     .modal-buttons {
         margin-top: 8px;
+        gap: 8px;
     }
 
     .modal-clear, .modal-close {
         padding: 6px 10px;
         font-size: 0.7rem;
+        min-width: 80px;
     }
 }
 
@@ -555,7 +581,7 @@ body {
     }
 
     .preview-section {
-        max-height: 200px;
+        max-height: 250px; /* Синхронизируем с Preview.css */
     }
 
     .main-controls {
@@ -567,11 +593,25 @@ body {
     }
 
     .embroidery-row {
+        display: grid;
+        grid-template-columns: 1fr; /* Один столбец для компактности */
         gap: 3px;
     }
 
     .embroidery-part {
         padding: 3px;
+    }
+
+    .color-part {
+        grid-column: 1 / 2;
+    }
+
+    .text-part {
+        grid-column: 1 / 2;
+    }
+
+    .settings-part {
+        grid-column: 1 / 2;
     }
 
     .font-select, .text-input {
@@ -610,19 +650,108 @@ body {
 
     .modal-content {
         padding: 5px;
-        max-width: 400px;
+        max-width: 90%;
+        max-height: none; /* Убираем ограничение по высоте */
+        overflow: visible; /* Убираем прокрутку */
     }
 
     .decoration-options {
+        grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
         gap: 4px;
+        margin: 4px 0;
+    }
+
+    .decoration-button {
+        padding: 4px;
     }
 
     .modal-buttons {
         margin-top: 5px;
+        gap: 5px;
+        flex-wrap: wrap;
     }
 
     .modal-clear, .modal-close {
         padding: 4px 8px;
         font-size: 0.6rem;
+        min-width: 70px;
+    }
+}
+
+/* Медиа-запрос для горизонтального просмотра на мобильных устройствах */
+@media (max-height: 480px) and (orientation: landscape) {
+    .constructor-page {
+        min-height: auto;
+        height: auto;
+        padding: 5px;
+    }
+
+    .constructor-container {
+        min-height: auto;
+        flex-direction: column; /* Вертикальное расположение */
+        gap: 5px;
+        height: auto;
+        overflow: visible;
+    }
+
+    .content-row {
+        flex-direction: column;
+        gap: 5px;
+        max-width: 100%;
+    }
+
+    .preview-section, .main-controls {
+        max-width: 100%;
+    }
+
+    .preview-section {
+        max-height: 200px; /* Синхронизируем с Preview.css */
+    }
+
+    .main-controls {
+        padding: 5px;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .embroidery-section {
+        padding: 5px;
+        max-height: none;
+        max-width: 100%;
+        overflow: visible;
+    }
+
+    .embroidery-row {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 5px;
+    }
+
+    .color-part {
+        grid-column: 1 / 2;
+    }
+
+    .text-part {
+        grid-column: 1 / 2;
+    }
+
+    .settings-part {
+        grid-column: 2 / 3;
+    }
+
+    .modal-content {
+        max-width: 90%;
+        padding: 5px;
+        max-height: none;
+        overflow: visible;
+    }
+
+    .decoration-options {
+        grid-template-columns: repeat(auto-fit, minmax(30px, 1fr));
+        gap: 4px;
+    }
+
+    .modal-buttons {
+        gap: 5px;
     }
 }

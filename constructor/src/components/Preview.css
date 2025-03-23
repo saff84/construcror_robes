@@ -1,18 +1,22 @@
-/* NEW STYLES ADDED MARCH 16, 2025 */
+/* src/components/Preview.css */
 
 .preview-image {
     width: 100%;
     height: auto;
     display: block;
+    object-fit: contain; /* Масштабируем изображение, сохраняя пропорции */
+    max-width: 100%; /* Ограничиваем ширину */
+    max-height: 100%; /* Ограничиваем высоту */
 }
 
 .preview-image-container {
     position: relative;
     width: 100%;
-    max-width: 300px; /* Ограничьте ширину превью, если нужно */
+    max-width: 300px; /* Ограничьте ширину превью */
     margin: 0 auto;
-    height: 100%; /* Убедимся, что контейнер занимает всю высоту изображения */
-    min-height: 400px; /* Минимальная высота для корректного отображения */
+    height: 100%;
+    max-height: 400px; /* Ограничиваем максимальную высоту */
+    overflow: hidden; /* Обрезаем содержимое, если выходит за границы */
 }
 
 .preview-image-container.with-hood {
@@ -22,6 +26,7 @@
 .preview-content {
     position: relative;
     width: 100%;
+    height: 100%;
 }
 
 .decoration-and-text-container {
@@ -153,106 +158,11 @@
     bottom: auto;
 }
 
-/* Стили для окна выбора декораций */
-.decoration-selection {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 90%; /* Увеличим ширину до 90% */
-    max-width: 800px; /* Увеличим максимальную ширину до 800px */
-    height: auto;
-    max-height: 80vh;
-    background: #fff;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
-    overflow-y: auto;
-    z-index: 1000;
-    padding: 20px;
-    display: none;
-    flex-direction: column;
-    align-items: center;
-}
-
-.decoration-selection.active {
-    display: flex;
-}
-
-/* Стили для контейнера картинок */
-.decoration-options-container {
-    display: grid; /* Используем grid для более гибкого размещения */
-    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr)); /* Увеличим размер ячеек */
-    gap: 20px; /* Увеличим пространство между блоками до 20px */
-    padding: 10px 0;
-    justify-content: center;
-}
-
-.decoration-option {
-    width: 90px; /* Увеличим размер блока */
-    height: 90px; /* Увеличим размер блока */
-    border: 2px solid #ddd;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: border-color 0.3s;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #f9f9f9;
-}
-
-.decoration-option:hover {
-    border-color: #007bff;
-}
-
-.decoration-option img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-/* Стили для кнопок */
-.decoration-selection-buttons {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-top: 20px;
-    gap: 10px; /* Добавим пространство между кнопками */
-}
-
-.decoration-selection-button {
-    padding: 12px 20px; /* Увеличим отступы для кнопок */
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    min-width: 120px; /* Установим минимальную ширину для консистентности */
-}
-
-.decoration-selection-button.clear {
-    background-color: #dc3545; /* Красный цвет для "Очистить" */
-    color: #fff;
-}
-
-.decoration-selection-button.clear:hover {
-    background-color: #c82333; /* Темнее при наведении */
-}
-
-.decoration-selection-button {
-    background-color: #007bff; /* Синий цвет для "Закрыть" */
-    color: #fff;
-}
-
-.decoration-selection-button:hover {
-    background-color: #0056b3; /* Темнее при наведении */
-}
-
 /* Медиа-запросы для планшетов (до 768px) */
 @media (max-width: 768px) {
     .preview-image-container {
         max-width: 250px;
-        min-height: 300px;
+        max-height: 300px; /* Уменьшаем высоту */
     }
 
     .preview-image-container.with-hood {
@@ -261,43 +171,44 @@
 
     .decoration-and-text-container {
         width: 60%;
-        height: 65%;
+        height: 80%; /* Увеличиваем высоту контейнера, чтобы раздвинуть элементы */
     }
 
     .decoration-image.above {
         width: 50%;
-        min-height: 60px;
+        min-height: 50px; /* Уменьшаем размер декорации */
     }
 
     .decoration-image.below {
         width: 70%;
-        min-height: 60px;
-        margin-top: 30px;
+        min-height: 50px; /* Уменьшаем размер декорации */
+        margin-top: 20px; /* Уменьшаем отступ */
     }
 
-    .decoration-selection {
-        padding: 15px;
-        max-width: 600px;
+    /* Позиции для халата без капюшона */
+    .decoration-image.above:not(.with-hood) {
+        top: 20%; /* Опускаем ниже воротника (было 10%) */
     }
 
-    .decoration-options-container {
-        gap: 15px;
-        grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    .text-container:not(.with-hood) {
+        top: 45%; /* Слегка сдвигаем текст ниже (было 40%) */
     }
 
-    .decoration-option {
-        width: 70px;
-        height: 70px;
+    .decoration-image.below:not(.with-hood) {
+        bottom: 5%; /* Оставляем как есть */
     }
 
-    .decoration-selection-buttons {
-        gap: 8px;
+    /* Позиции для халата с капюшоном */
+    .decoration-image.above.with-hood {
+        top: 40%; /* Опускаем ниже воротника (было 30%) */
     }
 
-    .decoration-selection-button {
-        padding: 10px 16px;
-        font-size: 12px;
-        min-width: 100px;
+    .text-container.with-hood {
+        top: 60%; /* Слегка сдвигаем текст ниже (было 55%) */
+    }
+
+    .decoration-image.below.with-hood {
+        top: 70%; /* Оставляем как есть */
     }
 }
 
@@ -305,7 +216,7 @@
 @media (max-width: 480px) {
     .preview-image-container {
         max-width: 200px;
-        min-height: 250px;
+        max-height: 250px; /* Уменьшаем высоту */
     }
 
     .preview-image-container.with-hood {
@@ -314,47 +225,105 @@
 
     .decoration-and-text-container {
         width: 70%;
-        height: 60%;
+        height: 85%; /* Ещё больше увеличиваем высоту контейнера */
     }
 
     .decoration-image.above {
         width: 40%;
-        min-height: 50px;
+        min-height: 40px; /* Уменьшаем размер декорации */
     }
 
     .decoration-image.below {
         width: 60%;
-        min-height: 50px;
-        margin-top: 20px;
+        min-height: 40px; /* Уменьшаем размер декорации */
+        margin-top: 15px; /* Уменьшаем отступ */
     }
 
     .text-container {
-        font-size: 12px !important; /* Переопределяем размер текста */
+        font-size: 10px !important; /* Уменьшаем размер текста */
     }
 
-    .decoration-selection {
-        padding: 10px;
-        max-width: 350px;
+    /* Позиции для халата без капюшона */
+    .decoration-image.above:not(.with-hood) {
+        top: 15%; /* Опускаем ниже воротника (было 5%) */
     }
 
-    .decoration-options-container {
-        gap: 10px;
-        grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    .text-container:not(.with-hood) {
+        top: 40%; /* Слегка сдвигаем текст ниже (было 35%) */
     }
 
-    .decoration-option {
-        width: 50px;
-        height: 50px;
+    .decoration-image.below:not(.with-hood) {
+        bottom: 5%; /* Оставляем как есть */
     }
 
-    .decoration-selection-buttons {
-        flex-direction: column;
-        gap: 5px;
+    /* Позиции для халата с капюшоном */
+    .decoration-image.above.with-hood {
+        top: 35%; /* Опускаем ниже воротника (было 25%) */
     }
 
-    .decoration-selection-button {
-        padding: 8px 12px;
-        font-size: 10px;
-        min-width: 80px;
+    .text-container.with-hood {
+        top: 55%; /* Слегка сдвигаем текст ниже (было 50%) */
+    }
+
+    .decoration-image.below.with-hood {
+        top: 65%; /* Оставляем как есть */
+    }
+}
+
+/* Медиа-запрос для горизонтального просмотра на мобильных устройствах */
+@media (max-height: 480px) and (orientation: landscape) {
+    .preview-image-container {
+        max-width: 150px;
+        max-height: 200px; /* Уменьшаем высоту для альбомной ориентации */
+    }
+
+    .preview-image-container.with-hood {
+        margin-top: 20px;
+    }
+
+    .decoration-and-text-container {
+        width: 70%;
+        height: 80%; /* Увеличиваем высоту контейнера */
+    }
+
+    .decoration-image.above {
+        width: 40%;
+        min-height: 30px; /* Уменьшаем размер декорации */
+    }
+
+    .decoration-image.below {
+        width: 60%;
+        min-height: 30px; /* Уменьшаем размер декорации */
+        margin-top: 10px; /* Уменьшаем отступ */
+    }
+
+    .text-container {
+        font-size: 8px !important; /* Уменьшаем размер текста */
+    }
+
+    /* Позиции для халата без капюшона */
+    .decoration-image.above:not(.with-hood) {
+        top: 15%; /* Опускаем ниже воротника (было 5%) */
+    }
+
+    .text-container:not(.with-hood) {
+        top: 40%; /* Слегка сдвигаем текст ниже (было 35%) */
+    }
+
+    .decoration-image.below:not(.with-hood) {
+        bottom: 5%; /* Оставляем как есть */
+    }
+
+    /* Позиции для халата с капюшоном */
+    .decoration-image.above.with-hood {
+        top: 35%; /* Опускаем ниже воротника (было 25%) */
+    }
+
+    .text-container.with-hood {
+        top: 55%; /* Слегка сдвигаем текст ниже (было 50%) */
+    }
+
+    .decoration-image.below.with-hood {
+        top: 65%; /* Оставляем как есть */
     }
 }

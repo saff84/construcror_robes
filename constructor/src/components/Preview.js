@@ -20,9 +20,6 @@ const textColorMapping = {
 };
 
 const Preview = ({ selectedOptions }) => {
-    console.log('Selected color:', selectedOptions.color);
-    console.log('Selected text color:', selectedOptions.textColor);
-
     const getImageSource = () => {
         if (selectedOptions.product === 'robe') {
             if (selectedOptions.robeType === 'Махровый') {
@@ -40,19 +37,16 @@ const Preview = ({ selectedOptions }) => {
 
     const getColorMatrix = (color) => {
         const matrix = colorMatrices[color] || colorMatrices['#FFFFFF'];
-        console.log('Applied matrix for color', color, ':', matrix);
         return matrix;
     };
 
     const getTextColorMatrix = (color) => {
         const matrix = textColorMatrices[color] || textColorMatrices['#FFFFFF'];
-        console.log('Applied text color matrix for color', color, ':', matrix);
         return matrix;
     };
 
     const getBelowDecorationColorMatrix = (color) => {
         const matrix = belowDecorationColorMatrices[color] || belowDecorationColorMatrices['#FFFFFF'];
-        console.log('Applied below decoration color matrix for color', color, ':', matrix);
         return matrix;
     };
 
@@ -141,23 +135,6 @@ const Preview = ({ selectedOptions }) => {
                                 </>
                             )}
                         </div>
-                    </div>
-                </div>
-                <button className="decoration-trigger" onClick={() => document.querySelector('.decoration-selection').classList.toggle('active')}>
-                    Выберите декорацию
-                </button>
-                <div className="decoration-selection">
-                    <h3>Выберите нижнюю декорацию</h3>
-                    <div className="decoration-options-container">
-                        {decorationImages.below.map((image, index) => (
-                            <div key={index} className="decoration-option">
-                                <img src={image} alt={`Decoration ${index}`} />
-                            </div>
-                        ))}
-                    </div>
-                    <div className="decoration-selection-buttons">
-                        <button className="decoration-selection-button clear">Очистить</button>
-                        <button className="decoration-selection-button">Закрыть</button>
                     </div>
                 </div>
             </div>
